@@ -50,10 +50,6 @@ dfTestTable["coClean"] = cleanCompanies(dfTestTable["Companies M"])
 
 dfTable["coClean"] = cleanCompanies(dfTable["Companies"])
 
-dfTestTable
-
-dfTable
-
 choices = dfTestTable["coClean"].tolist()
 
 def fm(row):
@@ -63,15 +59,11 @@ def fm(row):
 
 dfMatching = dfTable.apply(fm,axis=1)
 
-dfMatching
-
 wsMatching = ss.worksheet('Matching')
 
 dfCombined = pd.merge(dfTestTable,dfMatching,how="inner",on="Index")
-print(dfCombined)
 
 IofLists = dfCombined.to_numpy().tolist()
-print(IofLists)
 
 headers = dfCombined.columns.to_list()
 dataToWrite = [headers] + IofLists
